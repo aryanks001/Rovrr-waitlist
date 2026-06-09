@@ -1,0 +1,84 @@
+﻿Created At: 2026-06-09T14:21:00Z
+Completed At: 2026-06-09T14:21:00Z
+File Path: `file:///e:/Rovrr%20Waitlist/rovrr-waitlist.html`
+Total Lines: 1098
+Total Bytes: 42472
+Showing lines 1 to 800
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: <!DOCTYPE html>
+2: <html lang="en">
+3: <head>
+4:   <meta charset="UTF-8" />
+5:   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+6:   <title>Rovrr â€” Early Access | Hunt Smarter. Land Faster.</title>
+7:   <meta name="description" content="I am building Rovrr for every professional who has been failed by a broken job market. Join the waitlist and help shape what this becomes." />
+8:   <link rel="preconnect" href="https://fonts.googleapis.com" />
+9:   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+10:   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+11:   <style>
+12:     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+13: 
+14:     :root {
+15:       --orange: #FF5A00;
+16:       --dark: #171717;
+17:       --cream: #F7F3EC;
+18:       --cream-deep: #EDE8DF;
+19:       --muted: rgba(23,23,23,0.45);
+20:       --muted-light: rgba(23,23,23,0.6);
+21:     }
+22: 
+23:     html { scroll-behavior: smooth; }
+24: 
+25:     body {
+26:       background: var(--cream);
+27:       color: var(--dark);
+28:       font-family: 'DM Sans', sans-serif;
+29:       font-size: 16px;
+30:       line-height: 1.6;
+31:       -webkit-font-smoothing: antialiased;
+32:     }
+33: 
+34:     /* NAV */
+35:     nav {
+36:       position: fixed;
+37:       top: 0; left: 0; right: 0;
+38:       z-index: 100;
+39:       background: var(--cream);
+40:       border-bottom: 1px solid rgba(23,23,23,0.08);
+41:       padding: 18px 48
+<truncated 23083 bytes>
+ption value="junior">Junior (1 to 3 yrs)</option>
+769:               <option value="mid">Mid Level (3 to 6 yrs)</option>
+770:               <option value="senior">Senior (6 to 10 yrs)</option>
+771:               <option value="lead">Lead or Manager (10 plus yrs)</option>
+772:             </select>
+773:           </div>
+774:           <div class="form-group">
+775:             <label class="form-label" for="city">City</label>
+776:             <input class="form-input" type="text" id="city" name="city" placeholder="New Delhi" required />
+777:           </div>
+778:         </div>
+779: 
+780:         <div class="form-group">
+781:           <label class="form-label" for="market">Which market are you targeting?</label>
+782:           <select class="form-select" id="market" name="market" required>
+783:             <option value="" disabled selected>Select market</option>
+784:             <option value="india">India</option>
+785:             <option value="uae">UAE</option>
+786:             <option value="uk">UK</option>
+787:             <option value="usa">USA</option>
+788:             <option value="singapore">Singapore</option>
+789:             <option value="multiple">Multiple markets</option>
+790:           </select>
+791:         </div>
+792: 
+793:         <div class="form-group">
+794:           <label class="form-label" for="pain">Biggest job hunt challenge right now?</label>
+795:           <select class="form-select" id="pain" name="pain" required>
+796:             <option value="" disabled selected>Select your biggest pain</option>
+797:             <option value="finding">Finding the right roles</option>
+798:             <option value="ats">Resume getting rejected by ATS</option>
+799:             <option value="response">No responses after applying</option>
+800:             <option value="interview">Struggling in interviews</option>
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.
+

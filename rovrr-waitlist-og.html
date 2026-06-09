@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rovrr — Early Access | Hunt Smarter. Land Faster.</title>
+  <meta name="description" content="I am building Rovrr for every professional who has been failed by a broken job market. Join the waitlist and help shape what this becomes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange: #FF5A00;
+      --dark: #171717;
+      --cream: #F7F3EC;
+      --cream-deep: #EDE8DF;
+      --muted: rgba(23,23,23,0.45);
+      --muted-light: rgba(23,23,23,0.6);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--dark);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--cream);
+      border-bottom: 1px solid rgba(23,23,23,0.08);
+      padding: 18px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.04em;
+      color: var(--dark);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--orange); }
+
+    .nav-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--muted-light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--orange); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      padding: 120px 48px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      max-width: 1200px;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      padding-top: 20px;
+    }
+
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--orange);
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--orange);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .hero-headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(48px, 5.5vw, 80px);
+      line-height: 0.95;
+      letter-spacing: 0.01em;
+      color: var(--dark);
+      margin-bottom: 28px;
+    }
+    .hero-headline .orange { color: var(--orange); }
+
+    .hero-sub {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--muted-light);
+      margin-bottom: 32px;
+      max-width: 480px;
+    }
+    .hero-sub strong { color: var(--dark); font-weight: 600; }
+
+    .hero-note-bottom {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    /* HERO FORM */
+    .hero-form-wrap {
+      background: var(--dark);
+      padding: 40px 36px;
+    }
+
+    .form-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 26px;
+      color: #fff;
+      letter-spacing: 0.02em;
+      margin-bottom: 6px;
+      line-height: 1.1;
+    }
+    .form-title span { color: var(--orange); }
+
+    .form-subtitle {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 28px;
+      text-transform: uppercase;
+    }
+
+    .form-group { margin-bottom: 14px; }
+
+    .form-label {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 7px;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      padding: 11px 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+      border-radius: 0;
+    }
+    .form-input::placeholder,
+    .form-textarea::placeholder { color: rgba(255,255,255,0.2); }
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus { border-color: var(--orange); }
+    .form-select option { background: #2a2a2a; color: #fff; }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 90px;
+      line-height: 1.6;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .optional-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.2);
+      margin-left: 6px;
+      text-transform: uppercase;
+    }
+
+    .form-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.07);
+      margin: 20px 0;
+    }
+
+    .form-section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 14px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--orange);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 16px 24px;
+      border: none;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255,90,0,0.4);
+    }
+
+    .form-footnote {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.2);
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    /* SUCCESS */
+    .success-message {
+      display: none;
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .success-message.visible { display: block; }
+
+    .success-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--orange);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 22px;
+    }
+
+    .success-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 40px;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+    .success-body {
+      font-size: 15px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.8;
+    }
+    .success-share {
+      margin-top: 24px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* DIVIDER */
+    .divider {
+      margin: 0 48px;
+      height: 1px;
+      background: rgba(23,23,23,0.08);
+    }
+
+    /* SECTIONS */
+    section { padding: 96px 48px; }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 32px;
+    }
+
+    /* PROBLEM */
+    .problem { background: var(--dark); }
+
+    .problem-headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 1;
+      color: #fff;
+      margin-bottom: 56px;
+      max-width: 700px;
+    }
+    .problem-headline .orange { color: var(--orange); }
+
+    .problem-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px 80px;
+      max-width: 960px;
+    }
+
+    .problem-line {
+      font-size: 16px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.55);
+    }
+    .problem-line strong {
+      color: #fff;
+      font-weight: 500;
+      display: block;
+      margin-bottom: 8px;
+      font-size: 17px;
+    }
+
+    /* PERSONAL */
+    .personal { background: var(--cream); border-top: 1px solid rgba(23,23,23,0.08); }
+    .personal-inner { max-width: 680px; }
+
+    .personal-headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(38px, 5vw, 60px);
+      line-height: 1.0;
+      color: var(--dark);
+      margin-bottom: 40px;
+    }
+    .personal-headline .orange { color: var(--orange); }
+
+    .personal-body p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--muted-light);
+      margin-bottom: 24px;
+    }
+    .personal-body p strong { color: var(--dark); font-weight: 500; }
+
+    .moment {
+      font-size: 20px;
+      color: var(--dark);
+      font-weight: 500;
+      line-height: 1.6;
+      border-left: 3px solid var(--orange);
+      padding-left: 24px;
+      margin: 40px 0;
+    }
+
+    .founder-sig { margin-top: 48px; display: flex; flex-direction: column; gap: 4px; }
+    .founder-sig .name { font-size: 16px; font-weight: 600; color: var(--dark); }
+    .founder-sig .role {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+    .founder-sig a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--orange);
+      text-decoration: none;
+      margin-top: 8px;
+      display: inline-block;
+    }
+
+    /* SOLUTION */
+    .solution { background: var(--cream-deep); }
+
+    .solution-headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 1;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+    .solution-headline .orange { color: var(--orange); }
+
+    .solution-sub {
+      font-size: 17px;
+      color: var(--muted-light);
+      margin-bottom: 56px;
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .pillar { background: var(--cream); padding: 40px 32px; }
+    .pillar-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--orange);
+      margin-bottom: 20px;
+    }
+    .pillar-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 30px;
+      letter-spacing: 0.02em;
+      color: var(--dark);
+      margin-bottom: 14px;
+    }
+    .pillar-body { font-size: 15px; line-height: 1.75; color: var(--muted-light); }
+    .pillar-tag {
+      display: inline-block;
+      margin-top: 24px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--orange);
+      border: 1px solid rgba(255,90,0,0.3);
+      padding: 4px 10px;
+    }
+
+    /* STATS */
+    .stats { background: var(--dark); }
+    .stats .section-label { color: var(--orange); }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 48px;
+    }
+
+    .stat-item {
+      padding: 40px 36px;
+      border-left: 1px solid rgba(255,255,255,0.06);
+    }
+    .stat-item:first-child { border-left: none; }
+
+    .stat-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(48px, 6vw, 72px);
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .stat-label { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+    .stat-label strong { color: rgba(255,255,255,0.85); font-weight: 500; display: block; margin-bottom: 4px; }
+
+    /* EARLY ACCESS */
+    .early { background: var(--cream); }
+
+    .early-headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(42px, 6vw, 68px);
+      line-height: 1;
+      color: var(--dark);
+      margin-bottom: 48px;
+      max-width: 700px;
+    }
+    .early-headline .orange { color: var(--orange); }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-bottom: 48px;
+      max-width: 800px;
+    }
+
+    .benefit { background: var(--cream-deep); padding: 28px 32px; }
+    .benefit-title { font-size: 16px; font-weight: 600; color: var(--dark); margin-bottom: 8px; }
+    .benefit-body { font-size: 14px; color: var(--muted-light); line-height: 1.6; }
+
+    .urgency-line {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      color: var(--orange);
+    }
+
+    /* FINAL CTA */
+    .final-cta {
+      background: var(--orange);
+      padding: 96px 48px;
+      text-align: center;
+    }
+
+    .final-headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(42px, 6vw, 80px);
+      line-height: 1;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .final-sub {
+      font-size: 18px;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 40px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    .btn-final {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff;
+      color: var(--orange);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 18px 40px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-final:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    }
+
+    .final-footnote {
+      margin-top: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0F0F0F;
+      padding: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      color: #fff;
+      letter-spacing: 0.04em;
+    }
+    .footer-logo span { color: var(--orange); }
+
+    .footer-tagline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.25);
+      margin-top: 4px;
+    }
+
+    .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+
+    .footer-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-link:hover { color: var(--orange); }
+
+    .footer-copy {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.15);
+    }
+
+    /* SHARE BUTTONS */
+    .share-wrap {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .share-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .share-buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .share-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 6px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.6);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    .share-btn:hover {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    .share-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .share-btn.twitter:hover { background: rgba(29,161,242,0.15); color: #1DA1F2; border-color: rgba(29,161,242,0.3); }
+    .share-btn.whatsapp:hover { background: rgba(37,211,102,0.15); color: #25D366; border-color: rgba(37,211,102,0.3); }
+    .share-btn.linkedin:hover { background: rgba(0,119,181,0.15); color: #0077B5; border-color: rgba(0,119,181,0.3); }
+    .share-btn.copy:hover { background: rgba(255,90,0,0.15); color: var(--orange); border-color: rgba(255,90,0,0.3); }
+
+    .copy-feedback {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      color: var(--orange);
+      text-align: center;
+      margin-top: 8px;
+      height: 16px;
+      transition: opacity 0.3s;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        padding: 110px 24px 64px;
+        min-height: unset;
+      }
+
+      section { padding: 64px 24px; }
+      .divider { margin: 0 24px; }
+      .problem-body { grid-template-columns: 1fr; gap: 32px; }
+      .pillars { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .stat-item { border-left: none; border-top: 1px solid rgba(255,255,255,0.06); }
+      .stat-item:first-child { border-top: none; }
+      .benefits { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .final-cta { padding: 64px 24px; }
+      footer { padding: 40px 24px; flex-direction: column; align-items: flex-start; }
+      .footer-right { align-items: flex-start; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo"><span>*</span>ROVRR.</a>
+    <a href="https://twitter.com/aryanks001" target="_blank" class="nav-link">Follow the build journey →</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+
+    <!-- LEFT: Copy -->
+    <div class="hero-left">
+      <div class="eyebrow">Building in Public — Join Early</div>
+      <h1 class="hero-headline">
+        I HAVE BEEN<br>
+        <span class="orange">WHERE YOU ARE.</span><br>
+        THAT IS WHY<br>
+        I AM BUILDING THIS.
+      </h1>
+      <p class="hero-sub">
+        3 months of searching. 12 years of experience. Nothing but silence, lowball offers, and consultants charging ₹1,00,000 for documents with zero guarantees.<br><br>
+        I know what that feels like. So I am building the solution. And I want your help to shape it into something that actually works for you.
+      </p>
+      <p class="hero-note-bottom">No credit card &nbsp;·&nbsp; No spam &nbsp;·&nbsp; Your story helps build the product</p>
+    </div>
+
+    <!-- RIGHT: Form -->
+    <div class="hero-form-wrap">
+      <div class="form-title">HELP ME BUILD THIS <span>FOR YOU</span></div>
+      <div class="form-subtitle">Join the waitlist · Share your pain · Shape what this becomes</div>
+
+      <form id="rovrr-form">
+
+        <div class="form-section-label">Your Details</div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="name">Full Name</label>
+            <input class="form-input" type="text" id="name" name="name" placeholder="Aryan Shrivastav" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email Address</label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="aryan@example.com" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="role">Current Role / Industry</label>
+          <input class="form-input" type="text" id="role" name="role" placeholder="Senior Marketing Manager, SaaS" required />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="experience">Experience Level</label>
+            <select class="form-select" id="experience" name="experience" required>
+              <option value="" disabled selected>Select yours</option>
+              <option value="fresher">Fresher (0 to 1 yr)</option>
+              <option value="junior">Junior (1 to 3 yrs)</option>
+              <option value="mid">Mid Level (3 to 6 yrs)</option>
+              <option value="senior">Senior (6 to 10 yrs)</option>
+              <option value="lead">Lead or Manager (10 plus yrs)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="city">City</label>
+            <input class="form-input" type="text" id="city" name="city" placeholder="New Delhi" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="market">Which market are you targeting?</label>
+          <select class="form-select" id="market" name="market" required>
+            <option value="" disabled selected>Select market</option>
+            <option value="india">India</option>
+            <option value="uae">UAE</option>
+            <option value="uk">UK</option>
+            <option value="usa">USA</option>
+            <option value="singapore">Singapore</option>
+            <option value="multiple">Multiple markets</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="pain">Biggest job hunt challenge right now?</label>
+          <select class="form-select" id="pain" name="pain" required>
+            <option value="" disabled selected>Select your biggest pain</option>
+            <option value="finding">Finding the right roles</option>
+            <option value="ats">Resume getting rejected by ATS</option>
+            <option value="response">No responses after applying</option>
+            <option value="interview">Struggling in interviews</option>
+            <option value="salary">Getting underpaid offers</option>
+            <option value="international">Breaking into international markets</option>
+            <option value="senior">Senior roles are impossible to find</option>
+          </select>
+        </div>
+
+        <div class="form-divider"></div>
+
+        <div class="form-section-label">Your Story <span class="optional-tag">Optional but valuable</span></div>
+
+        <div class="form-group">
+          <label class="form-label" for="story">Tell me what you are going through right now</label>
+          <textarea
+            class="form-textarea"
+            id="story"
+            name="story"
+            placeholder="How long have you been searching? What has the experience felt like? What do you wish existed that does not? Your story directly shapes what I build next."
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="wishlist">One thing you wish existed in your job search</label>
+          <textarea
+            class="form-textarea"
+            id="wishlist"
+            name="wishlist"
+            style="min-height: 60px;"
+            placeholder="If you could wave a wand and fix one thing about job hunting, what would it be?"
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Join the Waitlist and Help Shape Rovrr →</button>
+        <p class="form-footnote">No credit card &nbsp;·&nbsp; No spam &nbsp;·&nbsp; Cancel anytime</p>
+
+        <div class="share-wrap">
+          <p class="share-label">Know someone who needs this? Share it.</p>
+          <div class="share-buttons">
+            <a class="share-btn twitter" id="share-twitter" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              Twitter
+            </a>
+            <a class="share-btn whatsapp" id="share-whatsapp" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              WhatsApp
+            </a>
+            <a class="share-btn linkedin" id="share-linkedin" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
+            </a>
+            <button class="share-btn copy" id="share-copy" onclick="copyLink()">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/></svg>
+              Copy Link
+            </button>
+          </div>
+          <p class="copy-feedback" id="copy-feedback"></p>
+        </div>
+
+      </form>
+
+      <div class="success-message" id="success">
+        <div class="success-icon">✓</div>
+        <div class="success-title">You Are In.</div>
+        <p class="success-body">
+          Thank you for sharing your story.<br><br>
+          I will read every single response personally.<br>
+          Your experience of this problem shapes every decision I make building Rovrr.<br><br>
+          I will reach out before anyone else gets access.
+        </p>
+        <p class="success-share" style="margin-top:20px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.06em; color:rgba(255,255,255,0.3);">
+          Know someone going through this? Share it with them.
+        </p>
+        <div class="share-buttons" style="margin-top:12px;">
+          <a class="share-btn twitter" id="share-twitter-success" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            Twitter
+          </a>
+          <a class="share-btn whatsapp" id="share-whatsapp-success" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
+          </a>
+          <a class="share-btn linkedin" id="share-linkedin-success" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+          <button class="share-btn copy" onclick="copyLink()">
+            <svg viewBox="0 0 24 24"><path d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/></svg>
+            Copy Link
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PROBLEM -->
+  <section class="problem">
+    <div class="section-label">The Reality Nobody Talks About</div>
+    <h2 class="problem-headline">
+      YOU ARE NOT FAILING.<br>
+      <span class="orange">THE SYSTEM IS.</span>
+    </h2>
+    <div class="problem-body">
+      <div class="problem-line">
+        <strong>70% of senior roles never reach job boards.</strong>
+        They live in LinkedIn posts that disappear in 24 hours, Telegram channels most people do not know exist, and company career pages nobody is watching. By the time you find them, fifty people already have.
+      </div>
+      <div class="problem-line">
+        <strong>Your resume is rejected before a human sees it.</strong>
+        75% of applications are filtered by ATS systems before a hiring manager ever opens them. Not because you are unqualified. Because the format was wrong for the machine reviewing it first.
+      </div>
+      <div class="problem-line">
+        <strong>Consultants charge ₹60,000 to ₹1,00,000 upfront.</strong>
+        For ATS-friendly resumes. For international market formatting. Three month contracts. Zero guarantees. Just documents. I almost paid it. Then I decided to build the solution instead.
+      </div>
+      <div class="problem-line">
+        <strong>Generic preparation does not work.</strong>
+        YouTube videos. Generic mock questions. Answers that have nothing to do with this company, this role, this hiring manager. You walk in underprepared for a conversation that was always specific.
+      </div>
+    </div>
+  </section>
+
+  <!-- PERSONAL -->
+  <section class="personal">
+    <div class="personal-inner">
+      <div class="section-label">This Is Personal</div>
+      <h2 class="personal-headline">
+        I BUILT THIS FOR MYSELF FIRST.<br>
+        <span class="orange">THEN I REALIZED I WAS<br>BUILDING IT FOR MILLIONS.</span>
+      </h2>
+      <div class="personal-body">
+        <p>I am not a VC-backed founder who read a market report and spotted an opportunity.</p>
+        <p>
+          I am a marketing professional with <strong>12 years of experience</strong> who spent 3 months job hunting and got nowhere. Half my last CTC. Double the workload. Roles two levels below my experience. Relocation demands with zero support. Consulting firms charging ₹1,00,000 for resumes with no guarantees.
+        </p>
+        <div class="moment">
+          I sat with that frustration for weeks. Then I stopped looking for the right job and started building the right solution.
+        </div>
+        <p>If you have sent 40 applications into silence, this is for you.</p>
+        <p>If you have accepted less than you deserved because nothing better was visible, this is for you.</p>
+        <p>If you have ever wondered whether something is wrong with you — <strong>nothing is wrong with you. The system failed you. I am building Rovrr to go around it entirely.</strong></p>
+        <div class="founder-sig">
+          <span class="name">Aryan Shrivastav</span>
+          <span class="role">Solo Founder, Rovrr — Building in Public</span>
+          <a href="https://twitter.com/aryanks001" target="_blank">Follow every step of the build → @aryanks001</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section class="solution">
+    <div class="section-label">What I Am Building</div>
+    <h2 class="solution-headline">SCOUT. GUIDE. <span class="orange">PREPARE.</span></h2>
+    <p class="solution-sub">Three problems I lived personally. One platform I am building to solve all three. Here is what it looks like.</p>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-number">01 — SCOUT</div>
+        <div class="pillar-title">Find Jobs Nobody Else Sees</div>
+        <p class="pillar-body">I am building a system that monitors LinkedIn feed posts where hiring managers announce roles before posting anywhere else. Instagram business accounts. Telegram channels used by startup communities. Company career pages directly. All verified. All within 24 hours. Before anyone else finds them.</p>
+        <span class="pillar-tag">Verified · 24 Hour Window</span>
+      </div>
+      <div class="pillar">
+        <div class="pillar-number">02 — GUIDE</div>
+        <div class="pillar-title">Your Complete Application in 60 Seconds</div>
+        <p class="pillar-body">For every role you want, the goal is to generate your complete application automatically. An ATS optimized resume tailored to that specific role. A cover letter written for the hiring manager. A direct recruiter outreach email ready to send. Not templates. Built for this job. This company. Right now.</p>
+        <span class="pillar-tag">ATS Optimized · Per Role</span>
+      </div>
+      <div class="pillar">
+        <div class="pillar-number">03 — PREPARE</div>
+        <div class="pillar-title">Walk In Knowing What is Coming</div>
+        <p class="pillar-body">The interview prep module will read the job description, analyse the company, and simulate the actual interview before it happens. Specific questions. Specific context. Specific hiring manager patterns. So you walk in knowing exactly what this conversation will look like. No more underconfidence.</p>
+        <span class="pillar-tag">AI Coach · Role Specific</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="section-label">The Market This Exists In</div>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number">50M+</div>
+        <div class="stat-label"><strong>Professionals actively job hunting in India</strong>at any given time. Most using the same broken tools producing the same broken results.</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">₹1L</div>
+        <div class="stat-label"><strong>What consultants charge for ATS resumes</strong>with no guarantees and no outcomes. This is the gap I am building Rovrr to close.</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">60S</div>
+        <div class="stat-label"><strong>Target time to generate your complete application</strong>once you find the right role. Resume. Cover letter. Recruiter email. All tailored.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EARLY ACCESS -->
+  <section class="early">
+    <div class="section-label">Why Join Now</div>
+    <h2 class="early-headline">
+      JOIN EARLY.<br>
+      <span class="orange">HELP SHAPE WHAT<br>THIS BECOMES.</span>
+    </h2>
+    <div class="benefits">
+      <div class="benefit">
+        <div class="benefit-title">Your Feedback Builds the Product</div>
+        <div class="benefit-body">You are not joining a finished product. You are helping shape one. Your pain points, your market, your story — all of it goes directly into what I build next.</div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-title">Founding Member Pricing — Locked Forever</div>
+        <div class="benefit-body">Early access members get pricing that will never exist again once Rovrr launches publicly. Locked in the moment you sign up. Permanently.</div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-title">Direct Line to the Founder</div>
+        <div class="benefit-body">Not a support ticket. I will reach out personally. We will talk. Your experience of job hunting shapes every single decision I make building this.</div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-title">First Access at Launch</div>
+        <div class="benefit-body">When Rovrr goes live you are first in. Before the public. Before the waitlist closes. Before the founding pricing disappears forever.</div>
+      </div>
+    </div>
+    <p class="urgency-line">Once the waitlist closes, founding member pricing closes with it. Permanently.</p>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <h2 class="final-headline">YOUR NEXT ROLE<br>IS OUT THERE.</h2>
+    <p class="final-sub">I am building the system to find it. Help me build it right. Join the waitlist and tell me what you need.</p>
+    <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;" class="btn-final">Join the Waitlist →</a>
+    <p class="final-footnote">No credit card &nbsp;·&nbsp; Your story shapes the product &nbsp;·&nbsp; Founding pricing locked forever</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <div class="footer-logo"><span>*</span>ROVRR.</div>
+      <div class="footer-tagline">HUNT SMARTER. LAND FASTER.</div>
+    </div>
+    <div class="footer-right">
+      <a href="https://twitter.com/aryanks001" target="_blank" class="footer-link">Building in public → @aryanks001</a>
+      <span class="footer-copy">© 2026 Rovrr. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script>
+    const PAGE_URL = encodeURIComponent(window.location.href);
+    const TWITTER_TEXT = encodeURIComponent("The job market is broken. A solo founder who lived this pain is building the fix — Rovrr. Scout. Guide. Prepare. Join the early access waitlist and help shape it.");
+    const WHATSAPP_TEXT = encodeURIComponent("I just joined the early access waitlist for Rovrr — a platform being built to fix the broken job market. Scout jobs nobody else sees, get your complete application built automatically, prep for interviews the right way. Worth checking out if you are job hunting right now:");
+    const LINKEDIN_TEXT = encodeURIComponent("The job market is broken and most professionals are paying the price. A solo founder is building Rovrr to fix it — Scout. Guide. Prepare. Join the early access waitlist.");
+
+    function setShareLinks() {
+      const url = encodeURIComponent(window.location.href);
+
+      const twitterUrl = "https://twitter.com/intent/tweet?text=" + TWITTER_TEXT + "&url=" + url;
+      const whatsappUrl = "https://wa.me/?text=" + WHATSAPP_TEXT + "%20" + url;
+      const linkedinUrl = "https://www.linkedin.com/sharing/share-offsite/?url=" + url;
+
+      const ids = ['twitter', 'whatsapp', 'linkedin', 'twitter-success', 'whatsapp-success', 'linkedin-success'];
+
+      document.getElementById('share-twitter') && (document.getElementById('share-twitter').href = twitterUrl);
+      document.getElementById('share-whatsapp') && (document.getElementById('share-whatsapp').href = whatsappUrl);
+      document.getElementById('share-linkedin') && (document.getElementById('share-linkedin').href = linkedinUrl);
+      document.getElementById('share-twitter-success') && (document.getElementById('share-twitter-success').href = twitterUrl);
+      document.getElementById('share-whatsapp-success') && (document.getElementById('share-whatsapp-success').href = whatsappUrl);
+      document.getElementById('share-linkedin-success') && (document.getElementById('share-linkedin-success').href = linkedinUrl);
+    }
+
+    function copyLink() {
+      navigator.clipboard.writeText(window.location.href).then(function() {
+        const feedback = document.getElementById('copy-feedback');
+        if (feedback) {
+          feedback.textContent = 'Link copied!';
+          setTimeout(function() { feedback.textContent = ''; }, 2500);
+        }
+      }).catch(function() {
+        const feedback = document.getElementById('copy-feedback');
+        if (feedback) {
+          feedback.textContent = 'Copy: ' + window.location.href;
+        }
+      });
+    }
+
+    setShareLinks();
+
+    const form = document.getElementById('rovrr-form');
+    const success = document.getElementById('success');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      form.style.display = 'none';
+      success.classList.add('visible');
+    });
+  </script>
+
+</body>
+</html>
